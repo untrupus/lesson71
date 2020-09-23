@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Button from "./components/Button";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    const buttons = ['7', '8', '9', '+', '4', '5', '6', '-', '1', '2', '3', '*', '.', '0', '/'];
+
+    const buttonsPanel = buttons.map(button => {
+        return (
+            <Button
+                key={button}
+                value={button}
+            />
+        )
+    });
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>1234567</Text>
+            {buttonsPanel}
+            <Button
+                value='C'
+            />
+            <Button
+                value='='
+            />
+            <Button
+                value='CE'
+            />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flexDirection: "row",
+        flexWrap: 'wrap',
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    text: {
+        width: '100%',
+        padding: 10,
+        textAlign: 'right',
+        fontWeight: 'bold',
+        fontSize: 30
+    }
 });
